@@ -1,0 +1,16 @@
+{
+  "qualification_candidates": [
+    {
+      "company": "CrewAI",
+      "replay_pain": "high",
+      "integration_complexity": "medium",
+      "qualification_status": "strong_candidate"
+    },
+    {
+      "company": "Skyvern",
+      "replay_pain": "high",
+      "integration_complexity": "high",
+      "qualification_status": "candidate"
+    }
+  ]
+}
