@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay History</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .entry {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:15px;
+    }
+
+    .trace {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:8px;
+    }
+
+    .status {
+      color:#22c55e;
+      margin-bottom:6px;
+    }
+
+    .time {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Replay History</h1>
+
+<div id="history"></div>
+
+<script>
+
+fetch('/api/replay-history.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('history');
+
+    data.history.forEach(item => {
+
+      const div = document.createElement('div');
+
+      div.className = 'entry';
+
+      div.innerHTML = `
+        <div class="trace">${item.trace_id}</div>
+        <div class="status">${item.status}</div>
+        <div class="time">${item.timestamp}</div>
+      `;
+
+      container.appendChild(div);
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
