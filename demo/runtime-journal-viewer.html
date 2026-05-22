@@ -39,7 +39,17 @@
       margin-bottom:6px;
     }
 
-    .timestamp {
+    .timestamp. critical {
+  color:#ef4444;
+}
+
+.recovering {
+  color:#facc15;
+}
+
+.active {
+  color:#22c55e;
+} {
       color:#94a3b8;
       font-size:14px;
     }
@@ -77,7 +87,7 @@ async function loadJournal() {
 
       div.innerHTML =
         '<div class=\"event\">' + item.event + '</div>' +
-        '<div class=\"status\">' + item.status + '</div>' +
+        '<div class=\"status ' + item.status + '\">' + item.status + '</div>' +
         '<div class=\"timestamp\">' +
         (item.timestamp || 'runtime-active') +
         '</div>';
