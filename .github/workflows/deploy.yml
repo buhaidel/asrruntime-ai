@@ -6,14 +6,23 @@ on:
       - main
 
 jobs:
-  deploy:
+  deploy-check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deployment Ready
+      - name: Validate ASR runtime files
         run: |
-          echo "ASR runtime deployment workflow initialized."
-          echo "Replay runtime platform synchronized."
+          test -f demo/index.html
+          test -f demo/portal.html
+          test -f demo/api/health.json
+          test -f demo/api/verification.json
+          test -f runtime/docker-compose.yml
+          echo "ASR runtime validation passed."
+
+      - name: Deployment ready
+        run: |
+          echo "ASR CI/CD baseline is active."
+          echo "Next phase: server-side auto pull + health verification."
