@@ -1,0 +1,21 @@
+{
+  "economic_runtime": {
+    "mode": "pre-token infrastructure",
+    "purpose": "replay-verifiable economic coordination for agent workflows",
+    "status": "design_phase",
+    "principles": [
+      "infrastructure first",
+      "token later",
+      "replay-verifiable economic events",
+      "no speculative launch",
+      "human approval for high-risk actions"
+    ],
+    "initial_components": [
+      "economic event journal",
+      "agent budget policies",
+      "payment replay verification",
+      "MPC escalation model",
+      "economic failure reconstruction"
+    ]
+  }
+}

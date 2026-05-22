@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Economic Runtime</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial,sans-serif; padding:40px; }
+    h1 { font-size:42px; margin-bottom:30px; }
+    .card { background:#111827; padding:20px; border-radius:12px; margin-bottom:20px; }
+    .title { color:#38bdf8; font-size:22px; margin-bottom:10px; }
+    .text { color:#cbd5e1; }
+  </style>
+</head>
+<body>
+<h1>ASR Economic Runtime</h1>
+<div id="runtime"></div>
+<script>
+fetch('/api/economic-runtime.json')
+  .then(r => r.json())
+  .then(data => {
+    const er = data.economic_runtime;
+    const c = document.getElementById('runtime');
+    c.innerHTML += `<div class="card"><div class="title">Mode</div><div class="text">${er.mode}</div></div>`;
+    c.innerHTML += `<div class="card"><div class="title">Purpose</div><div class="text">${er.purpose}</div></div>`;
+    c.innerHTML += `<div class="card"><div class="title">Status</div><div class="text">${er.status}</div></div>`;
+    c.innerHTML += `<div class="card"><div class="title">Principles</div><div class="text">${er.principles.join('<br>')}</div></div>`;
+    c.innerHTML += `<div class="card"><div class="title">Initial Components</div><div class="text">${er.initial_components.join('<br>')}</div></div>`;
+  });
+</script>
+</body>
+</html>
