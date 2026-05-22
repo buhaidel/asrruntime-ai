@@ -1,0 +1,16 @@
+{
+  "discovery_calls": [
+    {
+      "company": "CrewAI",
+      "status": "awaiting_call",
+      "pain_signal": "multi_agent_debugging",
+      "notes": "Interested in replay visibility for orchestration failures."
+    },
+    {
+      "company": "Skyvern",
+      "status": "awaiting_call",
+      "pain_signal": "browser_agent_instability",
+      "notes": "Potential replay reconstruction value around browser failures."
+    }
+  ]
+}
