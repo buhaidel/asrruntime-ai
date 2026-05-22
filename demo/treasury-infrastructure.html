@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Treasury Infrastructure</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .title {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .value {
+      color:#22c55e;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Treasury Infrastructure</h1>
+
+<div id="treasury"></div>
+
+<script>
+
+async function loadTreasury() {
+
+  const response = await fetch('/api/treasury-infrastructure.json');
+
+  const data = await response.json();
+
+  const t = data.treasury_infrastructure;
+
+  const container = document.getElementById('treasury');
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Treasury Domains</div>
+      <div class="value">${t.treasury_domains.join('<br>')}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Settlement Readiness</div>
+      <div class="value">${t.settlement_readiness.join('<br>')}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Treasury Principles</div>
+      <div class="value">${t.treasury_principles.join('<br>')}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Status</div>
+      <div class="value">${t.status}</div>
+    </div>
+  `;
+
+}
+
+loadTreasury();
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "treasury_infrastructure": {
+    "treasury_domains": [
+      "operational_runtime_fund",
+      "machine_reserve_pool",
+      "human_escalation_reserve",
+      "experimental_execution_pool"
+    ],
+    "settlement_readiness": [
+      "USDC",
+      "stablecoin-compatible flows",
+      "future x402 integration"
+    ],
+    "treasury_principles": [
+      "replay-linked treasury mutations",
+      "segmented reserve domains",
+      "human escalation for strategic treasury actions",
+      "policy-first treasury execution"
+    ],
+    "status": "operational_design"
+  }
+}
