@@ -1,0 +1,14 @@
+{
+  "follow_up_pipeline": [
+    {
+      "company": "CrewAI",
+      "state": "awaiting_reply",
+      "next_action": "follow_up_day_3"
+    },
+    {
+      "company": "Skyvern",
+      "state": "awaiting_reply",
+      "next_action": "follow_up_day_3"
+    }
+  ]
+}
