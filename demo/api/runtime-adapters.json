@@ -1,0 +1,30 @@
+{
+  "adapter_framework_version": "v1",
+  "supported_runtimes": [
+    {
+      "name": "OpenAI Agents",
+      "status": "compatible"
+    },
+    {
+      "name": "LangGraph",
+      "status": "compatible"
+    },
+    {
+      "name": "Mastra",
+      "status": "compatible"
+    },
+    {
+      "name": "Custom Runtime",
+      "status": "normalized"
+    }
+  ],
+  "adapter_features": [
+    "workflow ingestion",
+    "event normalization",
+    "replay verification",
+    "evidence generation",
+    "runtime persistence"
+  ],
+  "replay_safe": true,
+  "external_ingestion_ready": true
+}

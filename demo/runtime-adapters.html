@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Runtime Adapters</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:20px;
+      margin-top:8px;
+    }
+
+    .item {
+      color:#38bdf8;
+      margin-top:10px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Runtime Adapters</h1>
+
+<div id="adapters"></div>
+
+<script>
+
+fetch('/api/runtime-adapters.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('adapters');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let runtimesHtml = '';
+    let featuresHtml = '';
+
+    data.supported_runtimes.forEach(runtime => {
+      runtimesHtml += `
+        <div class="item">
+          ${runtime.name} — ${runtime.status}
+        </div>
+      `;
+    });
+
+    data.adapter_features.forEach(feature => {
+      featuresHtml += `<div class="item">${feature}</div>`;
+    });
+
+    card.innerHTML = `
+      <div class="label">Adapter Framework Version</div>
+      <div class="value">${data.adapter_framework_version}</div>
+
+      <div class="label">Replay Safe</div>
+      <div class="value">${data.replay_safe}</div>
+
+      <div class="label">External Ingestion Ready</div>
+      <div class="value">${data.external_ingestion_ready}</div>
+
+      <div class="label">Supported Runtimes</div>
+      ${runtimesHtml}
+
+      <div class="label">Adapter Features</div>
+      ${featuresHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>
