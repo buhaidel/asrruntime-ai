@@ -1,0 +1,28 @@
+{
+  "economic_replay_lifecycle": [
+    {
+      "stage": "payment_requested",
+      "state": "journaled"
+    },
+    {
+      "stage": "budget_policy_checked",
+      "state": "verified"
+    },
+    {
+      "stage": "risk_threshold_evaluated",
+      "state": "evaluated"
+    },
+    {
+      "stage": "human_escalation_triggered",
+      "state": "conditional"
+    },
+    {
+      "stage": "payment_execution",
+      "state": "replay_linked"
+    },
+    {
+      "stage": "economic_recovery",
+      "state": "recoverable"
+    }
+  ]
+}
