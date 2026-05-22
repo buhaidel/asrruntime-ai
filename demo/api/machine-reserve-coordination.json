@@ -1,0 +1,18 @@
+{
+  "machine_reserve_coordination": {
+    "reserve_model": "policy_coordinated",
+    "reserve_domains": [
+      "autonomous_inference_budget",
+      "runtime_execution_pool",
+      "high_risk_reserve",
+      "human_escalation_pool"
+    ],
+    "principles": [
+      "segmented machine reserves",
+      "policy-scoped spending",
+      "replay-linked reserve mutations",
+      "human override for strategic actions"
+    ],
+    "status": "designed"
+  }
+}

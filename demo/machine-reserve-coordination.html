@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Machine Reserve Coordination</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .title {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .value {
+      color:#22c55e;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Machine Reserve Coordination</h1>
+
+<div id="reserve"></div>
+
+<script>
+
+async function loadReserve() {
+
+  const response = await fetch('/api/machine-reserve-coordination.json');
+
+  const data = await response.json();
+
+  const r = data.machine_reserve_coordination;
+
+  const container = document.getElementById('reserve');
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Reserve Model</div>
+      <div class="value">${r.reserve_model}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Reserve Domains</div>
+      <div class="value">${r.reserve_domains.join('<br>')}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Principles</div>
+      <div class="value">${r.principles.join('<br>')}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Status</div>
+      <div class="value">${r.status}</div>
+    </div>
+  `;
+
+}
+
+loadReserve();
+
+</script>
+
+</body>
+
+</html>
