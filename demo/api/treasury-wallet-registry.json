@@ -4,28 +4,28 @@
       "name": "ASR Operational Runtime",
       "network": "Solana",
       "asset": "USDC",
-      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "public_address": "p3pKQXUKb5qbCgW9p9mYfB7a4ZgqB33ciQqgzN8JJNN",
       "role": "daily runtime operations"
     },
     {
       "name": "ASR Machine Reserve",
       "network": "Solana",
       "asset": "USDC",
-      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "public_address": "3qejXaJcPe6Q3cXGqpjb7umQ8dzFZQ1F5xto2zP5mFQc",
       "role": "strategic machine reserve"
     },
     {
       "name": "ASR Experimental Execution",
       "network": "Solana",
       "asset": "USDC",
-      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "public_address": "GM56UvDQgwdDpJTc44DWmMux93iER3fUDpPjTbFMYZNf",
       "role": "test flows and integrations"
     },
     {
       "name": "ASR Human Escalation Reserve",
       "network": "Solana",
       "asset": "USDC",
-      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "public_address": "F1CYWNzezJhed7cMsLLk2naK5huqNeTNp2UtFUmETcHQ",
       "role": "high-risk approval reserve"
     }
   ],
