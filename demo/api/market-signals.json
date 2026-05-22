@@ -1,0 +1,19 @@
+{
+  "market_signals": [
+    {
+      "signal": "workflow_debugging_pain",
+      "strength": "high",
+      "source": "CrewAI"
+    },
+    {
+      "signal": "browser_agent_instability",
+      "strength": "high",
+      "source": "Skyvern"
+    },
+    {
+      "signal": "replay_interest",
+      "strength": "medium",
+      "source": "Letta"
+    }
+  ]
+}
