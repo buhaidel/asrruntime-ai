@@ -58,21 +58,18 @@
 
 async function loadJournal() {
 
-  const response = await fetch('/api/runtime-journal.jsonl');
+  const response = await fetch('/api/runtime-journal.json');
 
-  const text = await response.text();
-
-  const lines = text.trim().split('\\n');
+  const lines = await response.json();
 
   const container = document.getElementById('journal');
 
   container.innerHTML = '';
 
-  lines.reverse().slice(0, 20).forEach(line => {
+  lines.reverse().slice(0, 20).forEach(item => {
 
     try {
 
-      const item = JSON.parse(line);
 
       const div = document.createElement('div');
 
