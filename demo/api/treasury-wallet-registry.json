@@ -1,0 +1,38 @@
+{
+  "treasury_wallets": [
+    {
+      "name": "ASR Operational Runtime",
+      "network": "Solana",
+      "asset": "USDC",
+      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "role": "daily runtime operations"
+    },
+    {
+      "name": "ASR Machine Reserve",
+      "network": "Solana",
+      "asset": "USDC",
+      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "role": "strategic machine reserve"
+    },
+    {
+      "name": "ASR Experimental Execution",
+      "network": "Solana",
+      "asset": "USDC",
+      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "role": "test flows and integrations"
+    },
+    {
+      "name": "ASR Human Escalation Reserve",
+      "network": "Solana",
+      "asset": "USDC",
+      "public_address": "ADD_PUBLIC_ADDRESS_HERE",
+      "role": "high-risk approval reserve"
+    }
+  ],
+  "security_rules": [
+    "never store seed phrases on server",
+    "never commit private keys",
+    "public addresses only",
+    "small operational balances only during testing"
+  ]
+}
