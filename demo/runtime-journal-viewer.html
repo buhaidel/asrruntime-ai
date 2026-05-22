@@ -50,7 +50,7 @@
 
 async function loadJournal() {
 
-  const response = await fetch('/runtime/journal/runtime-journal.jsonl');
+  const response = await fetch('/api/runtime-journal.jsonl');
 
   const text = await response.text();
 
