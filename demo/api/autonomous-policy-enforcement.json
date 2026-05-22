@@ -1,0 +1,21 @@
+{
+  "autonomous_policy_enforcement": {
+    "execution_mode": "runtime_enforced",
+    "enforcement_rules": [
+      {
+        "rule": "high_risk_payments_require_escalation",
+        "status": "active"
+      },
+      {
+        "rule": "budget_limits_block_unapproved_execution",
+        "status": "active"
+      },
+      {
+        "rule": "replay_verification_required_before_settlement",
+        "status": "active"
+      }
+    ],
+    "fallback_mode": "human_override",
+    "status": "operational_design"
+  }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Autonomous Policy Enforcement</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .title {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .value {
+      color:#22c55e;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Autonomous Policy Enforcement</h1>
+
+<div id="policy"></div>
+
+<script>
+
+async function loadPolicy() {
+
+  const response = await fetch('/api/autonomous-policy-enforcement.json');
+
+  const data = await response.json();
+
+  const p = data.autonomous_policy_enforcement;
+
+  const container = document.getElementById('policy');
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Execution Mode</div>
+      <div class="value">${p.execution_mode}</div>
+    </div>
+  `;
+
+  p.enforcement_rules.forEach(rule => {
+
+    container.innerHTML += `
+      <div class="card">
+        <div class="title">${rule.rule}</div>
+        <div class="value">${rule.status}</div>
+      </div>
+    `;
+
+  });
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Fallback Mode</div>
+      <div class="value">${p.fallback_mode}</div>
+    </div>
+  `;
+
+  container.innerHTML += `
+    <div class="card">
+      <div class="title">Status</div>
+      <div class="value">${p.status}</div>
+    </div>
+  `;
+
+}
+
+loadPolicy();
+
+</script>
+
+</body>
+
+</html>
