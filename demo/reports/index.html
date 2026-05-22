@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay Evidence</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 60px;
+    }
+
+    h1 {
+      font-size: 42px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 24px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      font-size: 22px;
+      margin-top: 6px;
+    }
+
+    .success {
+      color: #22c55e;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Replay Evidence Report</h1>
+
+<div class="card">
+  <div class="label">Trace ID</div>
+  <div class="value">trace_demo_invoice_001</div>
+</div>
+
+<div class="card">
+  <div class="label">Replay Equality</div>
+  <div class="value success">PASS</div>
+</div>
+
+<div class="card">
+  <div class="label">Root Cause</div>
+  <div class="value">
+    Malformed metadata normalization created downstream inconsistency.
+  </div>
+</div>
+
+<div class="card">
+  <div class="label">Deterministic Recovery</div>
+  <div class="value">
+    Workflow replayed successfully without duplicating external side-effects.
+  </div>
+</div>
+
+</body>
+</html>

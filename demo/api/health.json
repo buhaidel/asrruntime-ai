@@ -1,0 +1,8 @@
+{
+  "status": "healthy",
+  "runtime": "asr-runtime-demo",
+  "portal": "live",
+  "replay": "available",
+  "evidence": "available",
+  "incident_center": "available"
+}

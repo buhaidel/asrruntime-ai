@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Runtime Dashboard</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      font-size: 28px;
+      margin-top: 8px;
+    }
+
+    .healthy {
+      color: #22c55e;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Runtime Dashboard</h1>
+
+<div id="dashboard"></div>
+
+<script>
+fetch('/api/diagnostics.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const dashboard = document.getElementById('dashboard');
+
+    const fields = [
+      ['Runtime Status', data.runtime_status],
+      ['Replay Engine', data.replay_engine],
+      ['Validator Status', data.validator_status],
+      ['Trace Integrity', data.trace_integrity],
+      ['Replay Equality', data.replay_equality],
+      ['Deterministic Recovery', data.deterministic_recovery],
+      ['Active Traces', data.active_traces],
+      ['Last Trace ID', data.last_trace_id],
+      ['Diagnostic Confidence', data.diagnostic_confidence]
+    ];
+
+    fields.forEach(item => {
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="label">${item[0]}</div>
+        <div class="value healthy">${item[1]}</div>
+      `;
+
+      dashboard.appendChild(card);
+
+    });
+
+  });
+</script>
+
+</body>
+</html>

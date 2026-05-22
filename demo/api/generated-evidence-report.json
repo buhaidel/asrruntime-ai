@@ -1,0 +1,40 @@
+{
+  "report_id": "asr_report_001",
+  "generated_from": "runtime-events.json",
+  "generation_mode": "simulated_runtime_generated",
+  "validation_status": "pass",
+  "trace_coverage": {
+    "total_events": 5,
+    "covered_events": 5,
+    "coverage_percent": 100
+  },
+  "summary": {
+    "primary_trace": "trace_demo_invoice_003",
+    "incident_type": "trace_corruption_detected",
+    "severity": "high",
+    "recovery_status": "recovery_attempt_started"
+  },
+  "evidence": [
+    {
+      "event_id": "evt_001",
+      "claim": "Workflow intake was recorded.",
+      "status": "verified"
+    },
+    {
+      "event_id": "evt_003",
+      "claim": "Validator warning was detected.",
+      "status": "verified"
+    },
+    {
+      "event_id": "evt_004",
+      "claim": "Trace corruption was detected.",
+      "status": "verified"
+    },
+    {
+      "event_id": "evt_005",
+      "claim": "Recovery attempt was started.",
+      "status": "verified"
+    }
+  ],
+  "customer_safe_statement": "ASR reconstructed the operational incident from recorded runtime events and verified evidence references."
+}

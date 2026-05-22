@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Mutation Dashboard</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      font-size: 26px;
+      margin-top: 8px;
+      color: #22c55e;
+    }
+
+    ul {
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Mutation Dashboard</h1>
+
+<div id="dashboard"></div>
+
+<script>
+fetch('/api/mutation-state.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const dashboard = document.getElementById('dashboard');
+
+    const fields = [
+      ['Runtime Cycle', data.runtime_cycle],
+      ['Runtime Status', data.runtime_status],
+      ['Replay Engine', data.replay_engine],
+      ['Validator Status', data.validator_status],
+      ['Trace Integrity', data.trace_integrity],
+      ['Active Traces', data.active_traces],
+      ['Mutation State', data.mutation_state],
+      ['Diagnostic Confidence', data.diagnostic_confidence]
+    ];
+
+    fields.forEach(item => {
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="label">${item[0]}</div>
+        <div class="value">${item[1]}</div>
+      `;
+
+      dashboard.appendChild(card);
+
+    });
+
+    const eventsCard = document.createElement('div');
+    eventsCard.className = 'card';
+
+    let eventsHtml = '<div class=\"label\">Runtime Events</div><ul>';
+
+    data.runtime_events.forEach(event => {
+      eventsHtml += `<li>${event}</li>`;
+    });
+
+    eventsHtml += '</ul>';
+
+    eventsCard.innerHTML = eventsHtml;
+
+    dashboard.appendChild(eventsCard);
+
+  });
+</script>
+
+</body>
+</html>

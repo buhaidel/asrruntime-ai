@@ -1,0 +1,17 @@
+{
+  "runtime_status": "healthy",
+  "replay_engine": "active",
+  "validator_status": "pass",
+  "trace_integrity": "verified",
+  "replay_equality": "pass",
+  "deterministic_recovery": true,
+  "active_traces": 3,
+  "last_trace_id": "trace_demo_invoice_001",
+  "diagnostic_confidence": 0.92,
+  "runtime_events": [
+    "workflow_received",
+    "trace_recorded",
+    "replay_started",
+    "replay_verified"
+  ]
+}

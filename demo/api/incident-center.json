@@ -1,0 +1,25 @@
+{
+  "runtime_status": "recovering",
+  "active_incidents": 2,
+  "active_traces": 7,
+  "validator_health": "warning",
+  "replay_engine": "recovering",
+  "current_priority": "trace_recovery",
+  "incident_feed": [
+    {
+      "incident_id": "inc_001",
+      "severity": "high",
+      "summary": "Trace corruption detected during replay reconstruction."
+    },
+    {
+      "incident_id": "inc_002",
+      "severity": "medium",
+      "summary": "Validator rebuild in progress."
+    }
+  ],
+  "recovery_operations": [
+    "trace_recovery_started",
+    "validator_rebuild_started",
+    "replay_reconstruction_in_progress"
+  ]
+}

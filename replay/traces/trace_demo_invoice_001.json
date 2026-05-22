@@ -1,0 +1,29 @@
+{
+  "trace_id": "trace_demo_invoice_001",
+  "workflow": "invoice_processing",
+  "status": "replay_pass",
+  "actors": [
+    {
+      "actor": "IntakeActor",
+      "event": "invoice_received"
+    },
+    {
+      "actor": "ValidationActor",
+      "event": "malformed_currency_detected"
+    },
+    {
+      "actor": "RiskActor",
+      "event": "inconsistent_payload_received"
+    },
+    {
+      "actor": "TreasuryActor",
+      "event": "approval_rejected"
+    },
+    {
+      "actor": "ReplayActor",
+      "event": "replay_equality_verified"
+    }
+  ],
+  "root_cause": "Malformed metadata normalization created downstream inconsistency.",
+  "deterministic_recovery": true
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay Export Package</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      margin-top: 8px;
+      font-size: 22px;
+      color: #22c55e;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-right: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Replay Export Package</h1>
+
+<div id="export"></div>
+
+<script>
+
+fetch('/api/replay-export-package.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('export');
+
+    const summary = document.createElement('div');
+
+    summary.className = 'card';
+
+    summary.innerHTML = `
+      <div class="label">Export ID</div>
+      <div class="value">${data.export_id}</div>
+
+      <div class="label">Trace ID</div>
+      <div class="value">${data.trace_id}</div>
+
+      <div class="label">Replay Equality</div>
+      <div class="value">${data.verification.replay_equality}</div>
+
+      <div class="label">Trace Coverage</div>
+      <div class="value">${data.verification.trace_coverage}</div>
+
+      <div class="label">Validator Status</div>
+      <div class="value">${data.verification.validator_status}</div>
+    `;
+
+    container.appendChild(summary);
+
+    const badges = document.createElement('div');
+
+    badges.className = 'card';
+
+    let badgesHtml = '<div class=\"label\">Trust Badges</div>';
+
+    data.trust_badges.forEach(badge => {
+      badgesHtml += `<div class=\"badge\">${badge}</div>`;
+    });
+
+    badges.innerHTML = badgesHtml;
+
+    container.appendChild(badges);
+
+    const statement = document.createElement('div');
+
+    statement.className = 'card';
+
+    statement.innerHTML = `
+      <div class="label">Customer Safe Summary</div>
+      <div class="value">${data.customer_safe_summary}</div>
+    `;
+
+    container.appendChild(statement);
+
+  });
+
+</script>
+
+</body>
+</html>

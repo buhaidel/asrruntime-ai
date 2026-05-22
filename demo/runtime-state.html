@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Runtime State</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      font-size: 24px;
+      margin-top: 8px;
+      color: #22c55e;
+    }
+
+    ul {
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Runtime State Engine</h1>
+
+<div id="runtime"></div>
+
+<script>
+fetch('/api/runtime-state.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const runtime = document.getElementById('runtime');
+
+    const fields = [
+      ['Runtime Status', data.runtime_status],
+      ['Replay Engine', data.replay_engine],
+      ['Validator Status', data.validator_status],
+      ['Trace Integrity', data.trace_integrity],
+      ['Replay Equality', data.replay_equality],
+      ['Deterministic Recovery', data.deterministic_recovery],
+      ['Active Traces', data.active_traces],
+      ['Last Trace ID', data.last_trace_id],
+      ['Diagnostic Confidence', data.diagnostic_confidence]
+    ];
+
+    fields.forEach(item => {
+
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="label">${item[0]}</div>
+        <div class="value">${item[1]}</div>
+      `;
+
+      runtime.appendChild(card);
+
+    });
+
+    const eventsCard = document.createElement('div');
+    eventsCard.className = 'card';
+
+    let eventsHtml = '<div class=\"label\">Runtime Events</div><ul>';
+
+    data.runtime_events.forEach(event => {
+      eventsHtml += `<li>${event}</li>`;
+    });
+
+    eventsHtml += '</ul>';
+
+    eventsCard.innerHTML = eventsHtml;
+
+    runtime.appendChild(eventsCard);
+
+  });
+</script>
+
+</body>
+</html>

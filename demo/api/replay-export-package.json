@@ -1,0 +1,31 @@
+{
+  "export_id": "asr_export_001",
+  "export_type": "replay_evidence_package",
+  "trace_id": "trace_demo_invoice_003",
+  "generated_from": [
+    "runtime-events.json",
+    "generated-evidence-report.json",
+    "incident-center.json"
+  ],
+  "verification": {
+    "replay_equality": "verified",
+    "trace_coverage": "100%",
+    "event_references": "verified",
+    "validator_status": "pass",
+    "customer_verifiable": true
+  },
+  "package_contents": [
+    "runtime event stream",
+    "incident summary",
+    "evidence report",
+    "recovery operations",
+    "trace coverage"
+  ],
+  "trust_badges": [
+    "TRACE VERIFIED",
+    "REPLAY SAFE",
+    "EVIDENCE COVERED",
+    "RECOVERY TRACKED"
+  ],
+  "customer_safe_summary": "This export package contains verified runtime events, replay evidence, and recovery state for the selected trace."
+}

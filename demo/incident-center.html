@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Runtime Incident Center</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      margin-top: 8px;
+      font-size: 24px;
+      color: #22c55e;
+    }
+
+    .incident {
+      margin-top: 12px;
+      color: #cbd5e1;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Runtime Incident Center</h1>
+
+<div id="dashboard"></div>
+
+<script>
+
+fetch('/api/incident-center.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const dashboard = document.getElementById('dashboard');
+
+    const summary = document.createElement('div');
+
+    summary.className = 'card';
+
+    summary.innerHTML = `
+      <div class="label">Runtime Status</div>
+      <div class="value">${data.runtime_status}</div>
+
+      <div class="label">Replay Engine</div>
+      <div class="value">${data.replay_engine}</div>
+
+      <div class="label">Validator Health</div>
+      <div class="value">${data.validator_health}</div>
+
+      <div class="label">Active Incidents</div>
+      <div class="value">${data.active_incidents}</div>
+
+      <div class="label">Current Priority</div>
+      <div class="value">${data.current_priority}</div>
+    `;
+
+    dashboard.appendChild(summary);
+
+    data.incident_feed.forEach(incident => {
+
+      const div = document.createElement('div');
+
+      div.className = 'card';
+
+      div.innerHTML = `
+        <div class="label">${incident.incident_id}</div>
+
+        <div class="incident">
+          Severity: ${incident.severity}
+        </div>
+
+        <div class="incident">
+          ${incident.summary}
+        </div>
+      `;
+
+      dashboard.appendChild(div);
+
+    });
+
+    const recovery = document.createElement('div');
+
+    recovery.className = 'card';
+
+    let recoveryHtml = '<div class=\"label\">Recovery Operations</div>';
+
+    data.recovery_operations.forEach(op => {
+      recoveryHtml += `<div class=\"incident\">${op}</div>`;
+    });
+
+    recovery.innerHTML = recoveryHtml;
+
+    dashboard.appendChild(recovery);
+
+  });
+
+</script>
+
+</body>
+</html>

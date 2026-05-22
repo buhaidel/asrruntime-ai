@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay Trace</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .event {
+      background: #111827;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+
+    .actor {
+      font-size: 22px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .action {
+      margin-top: 10px;
+      color: #cbd5e1;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Replay Trace Timeline</h1>
+
+<div class="event">
+  <div class="actor">IntakeActor</div>
+  <div class="action">invoice_received</div>
+</div>
+
+<div class="event">
+  <div class="actor">ValidationActor</div>
+  <div class="action">malformed_currency_detected</div>
+</div>
+
+<div class="event">
+  <div class="actor">RiskActor</div>
+  <div class="action">inconsistent_payload_received</div>
+</div>
+
+<div class="event">
+  <div class="actor">TreasuryActor</div>
+  <div class="action">approval_rejected</div>
+</div>
+
+<div class="event">
+  <div class="actor">ReplayActor</div>
+  <div class="action">replay_equality_verified</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Auto Mutation Runtime</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      font-size: 24px;
+      margin-top: 8px;
+      color: #22c55e;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Auto Mutation Runtime</h1>
+
+<div id="dashboard"></div>
+
+<script>
+
+const states = [
+  'mutation-state.json',
+  'mutation-state-2.json',
+  'mutation-state-3.json',
+  'mutation-state-4.json'
+];
+
+let index = 0;
+
+function render(data) {
+
+  const dashboard = document.getElementById('dashboard');
+
+  dashboard.innerHTML = '';
+
+  const fields = [
+    ['Runtime Cycle', data.runtime_cycle],
+    ['Runtime Status', data.runtime_status],
+    ['Replay Engine', data.replay_engine],
+    ['Validator Status', data.validator_status],
+    ['Trace Integrity', data.trace_integrity],
+    ['Mutation State', data.mutation_state],
+    ['Diagnostic Confidence', data.diagnostic_confidence]
+  ];
+
+  fields.forEach(item => {
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    card.innerHTML = `
+      <div class="label">${item[0]}</div>
+      <div class="value">${item[1]}</div>
+    `;
+
+    dashboard.appendChild(card);
+
+  });
+
+}
+
+function loadState() {
+
+  fetch('/api/' + states[index])
+    .then(response => response.json())
+    .then(data => render(data));
+
+  index = (index + 1) % states.length;
+
+}
+
+loadState();
+
+setInterval(loadState, 5000);
+
+</script>
+
+</body>
+</html>

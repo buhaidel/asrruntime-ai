@@ -1,0 +1,22 @@
+{
+  "reports": [
+    {
+      "trace_id": "trace_demo_invoice_001",
+      "status": "pass",
+      "severity": "low",
+      "summary": "Replay equality verified successfully."
+    },
+    {
+      "trace_id": "trace_demo_invoice_002",
+      "status": "warning",
+      "severity": "medium",
+      "summary": "Validator warning detected during replay reconstruction."
+    },
+    {
+      "trace_id": "trace_demo_invoice_003",
+      "status": "critical",
+      "severity": "high",
+      "summary": "Trace corruption detected. Recovery sequence initiated."
+    }
+  ]
+}

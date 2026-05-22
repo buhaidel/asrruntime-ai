@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Generated Evidence Report</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .value {
+      margin-top: 8px;
+      font-size: 22px;
+      color: #22c55e;
+    }
+
+    .evidence {
+      margin-top: 15px;
+      color: #cbd5e1;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Generated Evidence Report</h1>
+
+<div id="report"></div>
+
+<script>
+
+fetch('/api/generated-evidence-report.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const report = document.getElementById('report');
+
+    const summary = document.createElement('div');
+
+    summary.className = 'card';
+
+    summary.innerHTML = `
+      <div class="label">Report ID</div>
+      <div class="value">${data.report_id}</div>
+
+      <div class="label">Validation Status</div>
+      <div class="value">${data.validation_status}</div>
+
+      <div class="label">Coverage</div>
+      <div class="value">${data.trace_coverage.coverage_percent}%</div>
+
+      <div class="label">Incident Type</div>
+      <div class="value">${data.summary.incident_type}</div>
+
+      <div class="label">Recovery Status</div>
+      <div class="value">${data.summary.recovery_status}</div>
+    `;
+
+    report.appendChild(summary);
+
+    data.evidence.forEach(item => {
+
+      const div = document.createElement('div');
+
+      div.className = 'card';
+
+      div.innerHTML = `
+        <div class="label">${item.event_id}</div>
+        <div class="evidence">${item.claim}</div>
+        <div class="value">${item.status}</div>
+      `;
+
+      report.appendChild(div);
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>

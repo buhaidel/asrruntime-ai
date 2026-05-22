@@ -1,0 +1,39 @@
+{
+  "events": [
+    {
+      "event_id": "evt_001",
+      "type": "workflow_received",
+      "trace_id": "trace_demo_invoice_001",
+      "actor": "IntakeActor",
+      "status": "recorded"
+    },
+    {
+      "event_id": "evt_002",
+      "type": "trace_recorded",
+      "trace_id": "trace_demo_invoice_001",
+      "actor": "ValidationActor",
+      "status": "recorded"
+    },
+    {
+      "event_id": "evt_003",
+      "type": "validator_warning_detected",
+      "trace_id": "trace_demo_invoice_002",
+      "actor": "Validator",
+      "status": "warning"
+    },
+    {
+      "event_id": "evt_004",
+      "type": "trace_corruption_detected",
+      "trace_id": "trace_demo_invoice_003",
+      "actor": "ReplayValidator",
+      "status": "critical"
+    },
+    {
+      "event_id": "evt_005",
+      "type": "recovery_attempt_started",
+      "trace_id": "trace_demo_invoice_003",
+      "actor": "RecoveryActor",
+      "status": "recovering"
+    }
+  ]
+}
