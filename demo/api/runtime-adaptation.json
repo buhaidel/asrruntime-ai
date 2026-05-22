@@ -1,0 +1,19 @@
+{
+  "runtime_adaptation": [
+    {
+      "trigger": "workflow_failure_debugging",
+      "runtime_response": "increase_replay_visibility",
+      "status": "active"
+    },
+    {
+      "trigger": "trust_verification_requests",
+      "runtime_response": "increase_integrity_scoring",
+      "status": "active"
+    },
+    {
+      "trigger": "browser_agent_failures",
+      "runtime_response": "increase_runtime_continuity_checks",
+      "status": "active"
+    }
+  ]
+}
