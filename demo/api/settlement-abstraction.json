@@ -1,0 +1,18 @@
+{
+  "settlement_abstraction": {
+    "mode": "adapter_based",
+    "supported_settlement_models": [
+      "stablecoin_settlement",
+      "x402_payment_flows",
+      "offchain_ledger",
+      "future_agentic_reserve_layer"
+    ],
+    "principles": [
+      "settlement optionality",
+      "replay-linked settlement events",
+      "policy-first execution",
+      "human escalation for high-risk actions"
+    ],
+    "status": "designed"
+  }
+}
