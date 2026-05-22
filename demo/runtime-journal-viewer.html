@@ -46,19 +46,49 @@
 
 <h1>ASR Runtime Journal Viewer</h1>
 
+<script>
 
+async function loadJournal() {
 
-<div class="entry">
-  <div class="event">replay_initialized</div>
-  <div class="status">active</div>
-  <div class="timestamp">continuity verified</div>
-</div>
+  const response = await fetch('/runtime/journal/runtime-journal.jsonl');
 
-<div class="entry">
-  <div class="event">verification_engine</div>
-  <div class="status">trusted</div>
-  <div class="timestamp">integrity scoring active</div>
-</div>
+  const text = await response.text();
+
+  const lines = text.trim().split('\n');
+
+  const container = document.getElementById('journal');
+
+  container.innerHTML = '';
+
+  lines.reverse().slice(0, 20).forEach(line => {
+
+    try {
+
+      const item = JSON.parse(line);
+
+      const div = document.createElement('div');
+
+      div.className = 'entry';
+
+      div.innerHTML = `
+        <div class="event">${item.event}</div>
+        <div class="status">${item.status}</div>
+        <div class="timestamp">${item.timestamp || 'runtime-active'}</div>
+      `;
+
+      container.appendChild(div);
+
+    } catch(err) {}
+
+  });
+
+}
+
+loadJournal();
+
+setInterval(loadJournal, 5000);
+
+</script>
 
 </body>
 </html>
