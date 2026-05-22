@@ -1,0 +1,9 @@
+{
+  "runtime_economic_coupling": {
+    "runtime_failure": "triggers_budget_review",
+    "economic_stress": "triggers_runtime_recovery",
+    "replay_verification": "required_before_settlement",
+    "high_risk_action": "requires_human_escalation",
+    "runtime_integrity_score": "linked_to_machine_trust_score"
+  }
+}

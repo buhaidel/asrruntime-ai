@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Runtime-Economic Coupling</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .title {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .value {
+      color:#22c55e;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Runtime-Economic Coupling</h1>
+
+<div id="coupling"></div>
+
+<script>
+
+async function loadCoupling() {
+
+  const response = await fetch('/api/runtime-economic-coupling.json');
+
+  const data = await response.json();
+
+  const c = data.runtime_economic_coupling;
+
+  const container = document.getElementById('coupling');
+
+  Object.entries(c).forEach(([key, value]) => {
+
+    container.innerHTML += `
+      <div class="card">
+        <div class="title">${key}</div>
+        <div class="value">${value}</div>
+      </div>
+    `;
+
+  });
+
+}
+
+loadCoupling();
+
+</script>
+
+</body>
+
+</html>
