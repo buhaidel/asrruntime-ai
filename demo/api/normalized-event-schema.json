@@ -1,0 +1,21 @@
+{
+  "schema_version": "v1",
+  "normalized_fields": [
+    "event_id",
+    "workflow_id",
+    "trace_id",
+    "actor",
+    "event_type",
+    "status",
+    "timestamp"
+  ],
+  "supported_statuses": [
+    "recorded",
+    "active",
+    "warning",
+    "critical",
+    "verified"
+  ],
+  "verification_mode": "replay_normalized",
+  "replay_safe": true
+}

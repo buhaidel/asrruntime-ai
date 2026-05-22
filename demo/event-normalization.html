@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Event Normalization</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:20px;
+      margin-top:8px;
+    }
+
+    .item {
+      color:#38bdf8;
+      margin-top:10px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Event Normalization</h1>
+
+<div id="schema"></div>
+
+<script>
+
+fetch('/api/normalized-event-schema.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('schema');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let fieldsHtml = '';
+    let statusesHtml = '';
+
+    data.normalized_fields.forEach(field => {
+      fieldsHtml += `<div class="item">${field}</div>`;
+    });
+
+    data.supported_statuses.forEach(status => {
+      statusesHtml += `<div class="item">${status}</div>`;
+    });
+
+    card.innerHTML = `
+      <div class="label">Schema Version</div>
+      <div class="value">${data.schema_version}</div>
+
+      <div class="label">Verification Mode</div>
+      <div class="value">${data.verification_mode}</div>
+
+      <div class="label">Replay Safe</div>
+      <div class="value">${data.replay_safe}</div>
+
+      <div class="label">Normalized Fields</div>
+      ${fieldsHtml}
+
+      <div class="label">Supported Statuses</div>
+      ${statusesHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>
