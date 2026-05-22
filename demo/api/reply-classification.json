@@ -1,0 +1,14 @@
+{
+  "reply_states": [
+    {
+      "company": "CrewAI",
+      "classification": "awaiting_reply",
+      "signal_strength": "pending"
+    },
+    {
+      "company": "Skyvern",
+      "classification": "awaiting_reply",
+      "signal_strength": "pending"
+    }
+  ]
+}
