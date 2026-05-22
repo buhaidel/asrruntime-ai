@@ -1,0 +1,16 @@
+{
+  "feedback_entries": [
+    {
+      "company": "CrewAI",
+      "category": "workflow_reconstruction",
+      "status": "pending_outreach",
+      "notes": "Interested in multi-agent replay visibility."
+    },
+    {
+      "company": "Skyvern",
+      "category": "browser_agent_failures",
+      "status": "pending_outreach",
+      "notes": "Potential replay pain around browser workflow instability."
+    }
+  ]
+}
