@@ -1,0 +1,19 @@
+{
+  "validation_pipeline": [
+    {
+      "company": "CrewAI",
+      "stage": "outreach_sent",
+      "next_step": "await_reply"
+    },
+    {
+      "company": "Skyvern",
+      "stage": "queued",
+      "next_step": "send_outreach"
+    },
+    {
+      "company": "Future Design Partner",
+      "stage": "future_discovery",
+      "next_step": "qualification"
+    }
+  ]
+}
