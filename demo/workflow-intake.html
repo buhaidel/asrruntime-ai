@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Workflow Intake</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:22px;
+      margin-top:8px;
+    }
+
+    .event {
+      color:#38bdf8;
+      margin-top:10px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Workflow Intake</h1>
+
+<div id="workflow"></div>
+
+<script>
+
+fetch('/api/workflow-intake.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('workflow');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let eventsHtml = '';
+
+    data.events.forEach(event => {
+      eventsHtml += `<div class="event">${event}</div>`;
+    });
+
+    card.innerHTML = `
+      <div class="label">Workflow ID</div>
+      <div class="value">${data.workflow_id}</div>
+
+      <div class="label">Source</div>
+      <div class="value">${data.source}</div>
+
+      <div class="label">Status</div>
+      <div class="value">${data.status}</div>
+
+      <div class="label">Trace Reference</div>
+      <div class="value">${data.trace_reference}</div>
+
+      <div class="label">Runtime Mode</div>
+      <div class="value">${data.runtime_mode}</div>
+
+      <div class="label">Workflow Events</div>
+      ${eventsHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>

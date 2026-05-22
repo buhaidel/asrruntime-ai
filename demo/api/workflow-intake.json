@@ -1,0 +1,13 @@
+{
+  "workflow_id": "wf_invoice_pipeline_001",
+  "source": "external_agent_runtime",
+  "status": "received",
+  "events": [
+    "workflow_received",
+    "trace_registered",
+    "validator_started",
+    "replay_initialized"
+  ],
+  "trace_reference": "trace_demo_invoice_004",
+  "runtime_mode": "external_ingestion"
+}
