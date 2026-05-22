@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Runtime Envelope</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:22px;
+      margin-top:8px;
+    }
+
+    .event {
+      color:#38bdf8;
+      margin-top:12px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Runtime Envelope</h1>
+
+<div id="envelope"></div>
+
+<script>
+
+fetch('/api/runtime-envelope.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('envelope');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let eventsHtml = '';
+
+    data.events.forEach(event => {
+      eventsHtml += `
+        <div class="event">
+          ${event.event} — ${event.actor} — ${event.status}
+        </div>
+      `;
+    });
+
+    card.innerHTML = `
+      <div class="label">Envelope Version</div>
+      <div class="value">${data.envelope_version}</div>
+
+      <div class="label">Runtime Source</div>
+      <div class="value">${data.runtime_source}</div>
+
+      <div class="label">Workflow ID</div>
+      <div class="value">${data.workflow_id}</div>
+
+      <div class="label">Trace ID</div>
+      <div class="value">${data.trace_id}</div>
+
+      <div class="label">Runtime Mode</div>
+      <div class="value">${data.verification.runtime_mode}</div>
+
+      <div class="label">Events</div>
+      ${eventsHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "envelope_version": "v1",
+  "runtime_source": "external_agent_runtime",
+  "workflow_id": "wf_invoice_pipeline_001",
+  "trace_id": "trace_demo_invoice_004",
+  "ingestion_timestamp": "2026-05-22T19:00:00Z",
+  "events": [
+    {
+      "event": "workflow_received",
+      "actor": "IntakeActor",
+      "status": "recorded"
+    },
+    {
+      "event": "validator_started",
+      "actor": "ValidatorActor",
+      "status": "active"
+    },
+    {
+      "event": "replay_initialized",
+      "actor": "ReplayActor",
+      "status": "initialized"
+    }
+  ],
+  "verification": {
+    "trace_integrity": "pending",
+    "runtime_mode": "external_ingestion"
+  }
+}
