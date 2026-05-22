@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Economic Integrity</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .title {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .value {
+      color:#22c55e;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Economic Integrity</h1>
+
+<div id="integrity"></div>
+
+<script>
+
+async function loadIntegrity() {
+
+  const response = await fetch('/api/economic-integrity.json');
+
+  const data = await response.json();
+
+  const i = data.economic_integrity;
+
+  const container = document.getElementById('integrity');
+
+  container.innerHTML = `
+    <div class="card"><div class="title">Replay-linked Payments</div><div class="value">${i.replay_linked_payments}</div></div>
+    <div class="card"><div class="title">Budget Policy Enforcement</div><div class="value">${i.budget_policy_enforcement}</div></div>
+    <div class="card"><div class="title">Economic Recovery Visibility</div><div class="value">${i.economic_recovery_visibility}</div></div>
+    <div class="card"><div class="title">Human Escalation Integrity</div><div class="value">${i.human_escalation_integrity}</div></div>
+    <div class="card"><div class="title">Machine Trust Score</div><div class="value">${i.machine_trust_score}</div></div>
+  `;
+
+}
+
+loadIntegrity();
+
+</script>
+
+</body>
+
+</html>
