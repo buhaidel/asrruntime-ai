@@ -1,0 +1,19 @@
+{
+  "budget_policies": [
+    {
+      "policy": "autonomous_inference_budget",
+      "limit": "50",
+      "action": "allow_autonomous_execution"
+    },
+    {
+      "policy": "external_payment_threshold",
+      "limit": "100",
+      "action": "require_human_escalation"
+    },
+    {
+      "policy": "high_risk_runtime_action",
+      "limit": "restricted",
+      "action": "manual_approval_required"
+    }
+  ]
+}
