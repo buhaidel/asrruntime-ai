@@ -1,0 +1,29 @@
+{
+  "economic_trust_layer": {
+    "status": "active_design",
+    "layers": [
+      {
+        "name": "replay_verifiable_payments",
+        "purpose": "connect payment events to replay evidence",
+        "state": "designed"
+      },
+      {
+        "name": "economic_failure_reconstruction",
+        "purpose": "reconstruct failed or disputed machine payments",
+        "state": "designed"
+      },
+      {
+        "name": "mpc_escalation_layer",
+        "purpose": "route high-risk economic actions to human approval",
+        "state": "designed"
+      }
+    ],
+    "rules": [
+      "small autonomous actions may proceed under policy",
+      "large or risky economic actions require escalation",
+      "all economic events must be replay-linked",
+      "token launch is not active",
+      "settlement rails remain optional adapters"
+    ]
+  }
+}

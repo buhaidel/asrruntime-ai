@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Economic Trust Layer</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial,sans-serif; padding:40px; }
+    h1 { font-size:42px; margin-bottom:30px; }
+    .card { background:#111827; padding:20px; border-radius:12px; margin-bottom:20px; }
+    .title { color:#38bdf8; font-size:22px; margin-bottom:10px; }
+    .text { color:#cbd5e1; }
+  </style>
+</head>
+<body>
+<h1>ASR Economic Trust Layer</h1>
+<div id="layer"></div>
+<script>
+fetch('/api/economic-trust-layer.json')
+  .then(r => r.json())
+  .then(data => {
+    const l = data.economic_trust_layer;
+    const c = document.getElementById('layer');
+    c.innerHTML += `<div class="card"><div class="title">Status</div><div class="text">${l.status}</div></div>`;
+    l.layers.forEach(x => {
+      c.innerHTML += `<div class="card"><div class="title">${x.name}</div><div class="text">${x.purpose}<br>state: ${x.state}</div></div>`;
+    });
+    c.innerHTML += `<div class="card"><div class="title">Rules</div><div class="text">${l.rules.join('<br>')}</div></div>`;
+  });
+</script>
+</body>
+</html>
