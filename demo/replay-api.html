@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay API</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .endpoint {
+      color:#38bdf8;
+      margin-top:12px;
+      font-size:18px;
+    }
+
+    .purpose {
+      color:#cbd5e1;
+      margin-top:5px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Replay API</h1>
+
+<div id="api"></div>
+
+<script>
+
+fetch('/api/replay-api.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('api');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let endpointsHtml = '';
+
+    data.endpoints.forEach(endpoint => {
+
+      endpointsHtml += `
+        <div class="endpoint">${endpoint.path}</div>
+        <div class="purpose">${endpoint.purpose}</div>
+      `;
+
+    });
+
+    card.innerHTML = endpointsHtml;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>

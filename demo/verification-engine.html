@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Verification Engine</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .metric {
+      color:#38bdf8;
+      margin-top:12px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Verification Engine</h1>
+
+<div id="engine"></div>
+
+<script>
+
+fetch('/api/verification-engine.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('engine');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let metricsHtml = '';
+
+    Object.entries(data.confidence_model).forEach(([key, value]) => {
+
+      metricsHtml += `
+        <div class="metric">
+          ${key}: ${value}
+        </div>
+      `;
+
+    });
+
+    card.innerHTML = `
+      <div class="metric">
+        Engine: ${data.verification_engine}
+      </div>
+
+      ${metricsHtml}
+
+      <div class="metric">
+        Result: ${data.verification_result}
+      </div>
+
+      <div class="metric">
+        Audit Ready: ${data.audit_ready}
+      </div>
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>
