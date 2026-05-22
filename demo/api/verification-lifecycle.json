@@ -1,0 +1,15 @@
+{
+  "verification_version": "v1",
+  "verification_status": "active",
+  "verification_flow": [
+    "trace_registered",
+    "events_normalized",
+    "validator_initialized",
+    "replay_executed",
+    "evidence_generated",
+    "replay_verified"
+  ],
+  "verification_confidence": 0.94,
+  "audit_ready": true,
+  "customer_safe": true
+}

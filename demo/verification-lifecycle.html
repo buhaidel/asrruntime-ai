@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay Verification Lifecycle</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:20px;
+      margin-top:8px;
+    }
+
+    .step {
+      color:#38bdf8;
+      margin-top:12px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Replay Verification Lifecycle</h1>
+
+<div id="verification"></div>
+
+<script>
+
+fetch('/api/verification-lifecycle.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('verification');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let flowHtml = '';
+
+    data.verification_flow.forEach(step => {
+      flowHtml += `<div class="step">${step}</div>`;
+    });
+
+    card.innerHTML = `
+      <div class="label">Verification Version</div>
+      <div class="value">${data.verification_version}</div>
+
+      <div class="label">Verification Status</div>
+      <div class="value">${data.verification_status}</div>
+
+      <div class="label">Verification Confidence</div>
+      <div class="value">${data.verification_confidence}</div>
+
+      <div class="label">Audit Ready</div>
+      <div class="value">${data.audit_ready}</div>
+
+      <div class="label">Customer Safe</div>
+      <div class="value">${data.customer_safe}</div>
+
+      <div class="label">Verification Flow</div>
+      ${flowHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>
