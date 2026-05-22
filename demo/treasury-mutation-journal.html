@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Treasury Mutation Journal</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial,sans-serif; padding:40px; }
+    h1 { font-size:42px; margin-bottom:30px; }
+    .card { background:#111827; padding:20px; border-radius:12px; margin-bottom:20px; }
+    .title { color:#38bdf8; font-size:22px; margin-bottom:10px; }
+    .value { color:#22c55e; }
+  </style>
+</head>
+<body>
+<h1>ASR Treasury Mutation Journal</h1>
+<div id="journal"></div>
+<script>
+fetch('/api/treasury-mutation-journal.json')
+  .then(r => r.json())
+  .then(data => {
+    const c = document.getElementById('journal');
+
+    data.treasury_mutations.forEach(item => {
+      c.innerHTML += `
+        <div class="card">
+          <div class="title">${item.event}</div>
+          <div class="value">${item.status}<br>${item.asset}<br>${item.mode}</div>
+        </div>
+      `;
+    });
+
+    c.innerHTML += `
+      <div class="card">
+        <div class="title">Rules</div>
+        <div class="value">${data.rules.join('<br>')}</div>
+      </div>
+    `;
+  });
+</script>
+</body>
+</html>

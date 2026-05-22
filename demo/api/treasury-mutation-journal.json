@@ -1,0 +1,34 @@
+{
+  "treasury_mutations": [
+    {
+      "event": "treasury_wallets_registered",
+      "status": "verified",
+      "asset": "USDC",
+      "mode": "simulation"
+    },
+    {
+      "event": "operational_runtime_fund_ready",
+      "status": "ready",
+      "asset": "USDC",
+      "mode": "simulation"
+    },
+    {
+      "event": "machine_reserve_policy_defined",
+      "status": "active",
+      "asset": "USDC",
+      "mode": "simulation"
+    },
+    {
+      "event": "human_escalation_reserve_defined",
+      "status": "active",
+      "asset": "USDC",
+      "mode": "simulation"
+    }
+  ],
+  "rules": [
+    "no private keys stored",
+    "public addresses only",
+    "real funds not required for simulation",
+    "future real deposits must be replay-linked"
+  ]
+}
