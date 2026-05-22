@@ -1,0 +1,24 @@
+{
+  "outreach_pipeline": [
+    {
+      "company": "CrewAI",
+      "status": "ready_to_contact",
+      "priority": "high"
+    },
+    {
+      "company": "Skyvern",
+      "status": "ready_to_contact",
+      "priority": "high"
+    },
+    {
+      "company": "Letta",
+      "status": "queued",
+      "priority": "medium"
+    },
+    {
+      "company": "Honeycomb",
+      "status": "queued",
+      "priority": "medium"
+    }
+  ]
+}
