@@ -1,0 +1,19 @@
+{
+  "validation_intelligence": [
+    {
+      "signal": "replay_visibility_interest",
+      "priority": "high",
+      "recommended_focus": "runtime continuity"
+    },
+    {
+      "signal": "workflow_failure_debugging",
+      "priority": "high",
+      "recommended_focus": "replay reconstruction"
+    },
+    {
+      "signal": "trust_verification",
+      "priority": "medium",
+      "recommended_focus": "integrity scoring"
+    }
+  ]
+}
