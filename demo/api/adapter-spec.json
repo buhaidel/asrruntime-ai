@@ -1,0 +1,23 @@
+{
+  "adapter_version": "v1",
+  "supported_runtimes": [
+    "OpenAI Agents",
+    "LangGraph",
+    "Mastra",
+    "Custom Runtime"
+  ],
+  "required_fields": [
+    "workflow_id",
+    "trace_id",
+    "events",
+    "runtime_source"
+  ],
+  "optional_fields": [
+    "metadata",
+    "recovery_state",
+    "validator_status",
+    "evidence_references"
+  ],
+  "ingestion_mode": "normalized_runtime_envelope",
+  "replay_ready": true
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Adapter Architecture</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:20px;
+      margin-top:8px;
+    }
+
+    .item {
+      color:#38bdf8;
+      margin-top:10px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Adapter Architecture</h1>
+
+<div id="adapter"></div>
+
+<script>
+
+fetch('/api/adapter-spec.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('adapter');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let runtimesHtml = '';
+    let requiredHtml = '';
+    let optionalHtml = '';
+
+    data.supported_runtimes.forEach(runtime => {
+      runtimesHtml += `<div class="item">${runtime}</div>`;
+    });
+
+    data.required_fields.forEach(field => {
+      requiredHtml += `<div class="item">${field}</div>`;
+    });
+
+    data.optional_fields.forEach(field => {
+      optionalHtml += `<div class="item">${field}</div>`;
+    });
+
+    card.innerHTML = `
+      <div class="label">Adapter Version</div>
+      <div class="value">${data.adapter_version}</div>
+
+      <div class="label">Ingestion Mode</div>
+      <div class="value">${data.ingestion_mode}</div>
+
+      <div class="label">Replay Ready</div>
+      <div class="value">${data.replay_ready}</div>
+
+      <div class="label">Supported Runtimes</div>
+      ${runtimesHtml}
+
+      <div class="label">Required Fields</div>
+      ${requiredHtml}
+
+      <div class="label">Optional Fields</div>
+      ${optionalHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>
