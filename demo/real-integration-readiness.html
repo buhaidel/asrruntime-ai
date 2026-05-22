@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Real Integration Readiness</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial,sans-serif; padding:40px; }
+    h1 { font-size:42px; margin-bottom:30px; }
+    .card { background:#111827; padding:20px; border-radius:12px; margin-bottom:20px; }
+    .title { color:#38bdf8; font-size:22px; margin-bottom:10px; }
+    .value { color:#22c55e; }
+  </style>
+</head>
+<body>
+<h1>ASR Real Integration Readiness</h1>
+<div id="readiness"></div>
+<script>
+fetch('/api/real-integration-readiness.json')
+  .then(r => r.json())
+  .then(data => {
+    const x = data.real_integration_readiness;
+    const c = document.getElementById('readiness');
+    Object.entries(x).forEach(([key, value]) => {
+      c.innerHTML += `
+        <div class="card">
+          <div class="title">${key}</div>
+          <div class="value">${Array.isArray(value) ? value.join('<br>') : value}</div>
+        </div>
+      `;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "real_integration_readiness": {
+    "status": "ready_for_design_partner_runtime",
+    "minimum_input_contract": [
+      "source",
+      "event",
+      "status",
+      "timestamp",
+      "workflow_id",
+      "trace_id"
+    ],
+    "supported_initial_sources": [
+      "langgraph_runtime",
+      "browser_agent_runtime",
+      "custom_agent_runtime"
+    ],
+    "integration_path": [
+      "receive runtime event",
+      "append to journal",
+      "publish structured runtime feed",
+      "run sequence validation",
+      "trigger recovery if needed",
+      "link runtime event to economic policy if applicable"
+    ],
+    "next_external_step": "request sample workflow failure scenario from first design partner"
+  }
+}
