@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>ASR Runtime Journal Viewer</title>
 
   <style>
+
     body {
       background:#0f172a;
       color:white;
@@ -40,47 +42,58 @@
     }
 
   </style>
+
 </head>
 
 <body>
 
 <h1>ASR Runtime Journal Viewer</h1>
 
+<div id="journal"></div>
+
 <script>
 
 async function loadJournal() {
 
-  const response = await fetch('/api/runtime-journal.jsonl');
+  try {
 
-  const text = await response.text();
+    const response = await fetch('/api/runtime-journal.jsonl');
 
-  const lines = text.trim().split('\n');
+    const text = await response.text();
 
-  const container = document.getElementById('journal');
+    const lines = text.trim().split('\\n');
 
-  container.innerHTML = '';
+    const container = document.getElementById('journal');
 
-  lines.reverse().slice(0, 20).forEach(line => {
+    container.innerHTML = '';
 
-    try {
+    lines.reverse().slice(0, 20).forEach(line => {
 
-      const item = JSON.parse(line);
+      try {
 
-      const div = document.createElement('div');
+        const item = JSON.parse(line);
 
-      div.className = 'entry';
+        const div = document.createElement('div');
 
-      div.innerHTML = `
-        <div class="event">${item.event}</div>
-        <div class="status">${item.status}</div>
-        <div class="timestamp">${item.timestamp || 'runtime-active'}</div>
-      `;
+        div.className = 'entry';
 
-      container.appendChild(div);
+        div.innerHTML = `
+          <div class="event">${item.event}</div>
+          <div class="status">${item.status}</div>
+          <div class="timestamp">${item.timestamp || 'runtime-active'}</div>
+        `;
 
-    } catch(err) {}
+        container.appendChild(div);
 
-  });
+      } catch(err) {}
+
+    });
+
+  } catch(err) {
+
+    console.error(err);
+
+  }
 
 }
 
@@ -91,4 +104,5 @@ setInterval(loadJournal, 5000);
 </script>
 
 </body>
+
 </html>
