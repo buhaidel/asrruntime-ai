@@ -1,0 +1,22 @@
+{
+  "economic_events": [
+    {
+      "event": "agent_payment_requested",
+      "status": "pending_review",
+      "amount": "25",
+      "currency": "USD-equivalent"
+    },
+    {
+      "event": "inference_budget_consumed",
+      "status": "verified",
+      "amount": "3",
+      "currency": "USD-equivalent"
+    },
+    {
+      "event": "runtime_budget_limit_triggered",
+      "status": "escalated",
+      "amount": "100",
+      "currency": "USD-equivalent"
+    }
+  ]
+}
