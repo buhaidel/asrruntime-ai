@@ -1,0 +1,19 @@
+{
+  "market_runtime_feedback": [
+    {
+      "signal": "multi_agent_debugging",
+      "runtime_priority": "replay_visibility",
+      "status": "tracked"
+    },
+    {
+      "signal": "browser_failure_reconstruction",
+      "runtime_priority": "runtime_continuity",
+      "status": "tracked"
+    },
+    {
+      "signal": "trust_verification",
+      "runtime_priority": "integrity_scoring",
+      "status": "tracked"
+    }
+  ]
+}

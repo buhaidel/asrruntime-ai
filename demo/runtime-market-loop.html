@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Runtime-Market Feedback Loop</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .entry {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .signal {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .priority {
+      color:#22c55e;
+      margin-bottom:8px;
+    }
+
+    .status {
+      color:#cbd5e1;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Runtime-Market Feedback Loop</h1>
+
+<div id="loop"></div>
+
+<script>
+
+async function loadLoop() {
+
+  const response = await fetch('/api/runtime-market-loop.json');
+
+  const data = await response.json();
+
+  const container = document.getElementById('loop');
+
+  container.innerHTML = '';
+
+  data.market_runtime_feedback.forEach(item => {
+
+    const div = document.createElement('div');
+
+    div.className = 'entry';
+
+    div.innerHTML = `
+      <div class="signal">${item.signal}</div>
+      <div class="priority">${item.runtime_priority}</div>
+      <div class="status">${item.status}</div>
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+loadLoop();
+
+</script>
+
+</body>
+
+</html>
