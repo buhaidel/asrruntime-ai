@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Design Partner Conversion</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .entry {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .stage {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .next {
+      color:#22c55e;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Design Partner Conversion</h1>
+
+<div id="conversion"></div>
+
+<script>
+
+async function loadConversion() {
+
+  const response = await fetch('/api/design-partner-conversion.json');
+
+  const data = await response.json();
+
+  const container = document.getElementById('conversion');
+
+  container.innerHTML = '';
+
+  data.conversion_flow.forEach(item => {
+
+    const div = document.createElement('div');
+
+    div.className = 'entry';
+
+    div.innerHTML = `
+      <div class="stage">${item.stage}</div>
+      <div class="next">${item.next_step}</div>
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+loadConversion();
+
+</script>
+
+</body>
+
+</html>

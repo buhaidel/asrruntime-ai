@@ -1,0 +1,20 @@
+{
+  "conversion_flow": [
+    {
+      "stage": "initial_interest",
+      "next_step": "discovery_call"
+    },
+    {
+      "stage": "technical_walkthrough",
+      "next_step": "workflow_review"
+    },
+    {
+      "stage": "workflow_review",
+      "next_step": "design_partner_decision"
+    },
+    {
+      "stage": "design_partner_confirmed",
+      "next_step": "runtime_attachment"
+    }
+  ]
+}
