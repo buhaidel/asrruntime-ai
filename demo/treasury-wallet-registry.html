@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>ASR Treasury Wallet Registry</title>
+
+  <style>
+
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .title {
+      color:#38bdf8;
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .value {
+      color:#22c55e;
+      word-break:break-all;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>ASR Treasury Wallet Registry</h1>
+
+<div id="wallets"></div>
+
+<script>
+
+async function loadWallets() {
+
+  const response = await fetch('/api/treasury-wallet-registry.json');
+
+  const data = await response.json();
+
+  const container = document.getElementById('wallets');
+
+  data.treasury_wallets.forEach(wallet => {
+
+    container.innerHTML += `
+      <div class="card">
+        <div class="title">${wallet.name}</div>
+        <div class="value">${wallet.public_address}</div>
+        <div class="value">${wallet.role}</div>
+      </div>
+    `;
+
+  });
+
+}
+
+loadWallets();
+
+</script>
+
+</body>
+
+</html>
