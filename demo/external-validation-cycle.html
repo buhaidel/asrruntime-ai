@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR External Validation Cycle</title>
+  <style>
+    body { background:#0f172a; color:white; font-family:Arial,sans-serif; padding:40px; }
+    h1 { font-size:42px; margin-bottom:30px; }
+    .card { background:#111827; padding:20px; border-radius:12px; margin-bottom:20px; }
+    .title { color:#38bdf8; font-size:22px; margin-bottom:10px; }
+    .text { color:#cbd5e1; }
+  </style>
+</head>
+<body>
+<h1>ASR First External Validation Cycle</h1>
+<div id="cycle"></div>
+<script>
+fetch('/api/external-validation-cycle.json')
+  .then(r => r.json())
+  .then(data => {
+    const c = document.getElementById('cycle');
+    c.innerHTML += `<div class="card"><div class="title">Status</div><div class="text">${data.status}</div></div>`;
+    data.targets.forEach(t => {
+      c.innerHTML += `<div class="card"><div class="title">${t.company}</div><div class="text">${t.stage}<br>${t.objective}</div></div>`;
+    });
+    c.innerHTML += `<div class="card"><div class="title">Rules</div><div class="text">${data.rules.join('<br>')}</div></div>`;
+    c.innerHTML += `<div class="card"><div class="title">Success Signals</div><div class="text">${data.success_signals.join('<br>')}</div></div>`;
+  });
+</script>
+</body>
+</html>

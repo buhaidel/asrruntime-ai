@@ -1,0 +1,29 @@
+{
+  "cycle": "first_external_validation",
+  "status": "ready",
+  "targets": [
+    {
+      "company": "CrewAI",
+      "stage": "ready_to_send",
+      "objective": "validate multi-agent replay pain"
+    },
+    {
+      "company": "Skyvern",
+      "stage": "queued_after_crewai",
+      "objective": "validate browser-agent failure reconstruction"
+    }
+  ],
+  "rules": [
+    "no production claims",
+    "no deterministic claims",
+    "no pricing discussion",
+    "no roadmap promises",
+    "discovery before selling"
+  ],
+  "success_signals": [
+    "confirms reconstruction pain",
+    "asks for technical walkthrough",
+    "shares failure scenario",
+    "asks about runtime attachment"
+  ]
+}
