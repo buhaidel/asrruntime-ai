@@ -1,0 +1,5 @@
+{"event":"runtime_initialized","status":"healthy"}
+{"event":"replay_engine_started","status":"active"}
+{"event":"validator_initialized","status":"pass"}
+{"event":"evidence_export_ready","status":"verified"}
+{"event":"incident_center_online","status":"active"}
