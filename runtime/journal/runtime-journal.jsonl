@@ -254,3 +254,8 @@
 {"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:01:45Z"}
 {"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:02:15Z"}
 {"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:02:45Z"}
+{"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:03:15Z"}
+{"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:03:45Z"}
+{"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:04:15Z"}
+{"event":"runtime_failure_injected","status":"critical","timestamp":"2026-05-22T14:04:34Z"}
+{"event":"runtime_cycle","status":"active","timestamp":"2026-05-22T14:04:45Z"}
