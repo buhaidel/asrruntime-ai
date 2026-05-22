@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASR Replay Pipeline</title>
+
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family:Arial,sans-serif;
+      padding:40px;
+    }
+
+    h1 {
+      font-size:42px;
+      margin-bottom:30px;
+    }
+
+    .card {
+      background:#111827;
+      padding:20px;
+      border-radius:12px;
+      margin-bottom:20px;
+    }
+
+    .label {
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .value {
+      color:#22c55e;
+      font-size:20px;
+      margin-top:8px;
+    }
+
+    .step {
+      color:#38bdf8;
+      margin-top:12px;
+      font-size:18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>ASR Replay Event Pipeline</h1>
+
+<div id="pipeline"></div>
+
+<script>
+
+fetch('/api/replay-pipeline.json')
+  .then(response => response.json())
+  .then(data => {
+
+    const container = document.getElementById('pipeline');
+
+    const card = document.createElement('div');
+
+    card.className = 'card';
+
+    let stepsHtml = '';
+
+    data.ingestion_flow.forEach(step => {
+      stepsHtml += `<div class="step">${step}</div>`;
+    });
+
+    card.innerHTML = `
+      <div class="label">Pipeline Version</div>
+      <div class="value">${data.pipeline_version}</div>
+
+      <div class="label">Pipeline Status</div>
+      <div class="value">${data.pipeline_status}</div>
+
+      <div class="label">Pipeline Mode</div>
+      <div class="value">${data.pipeline_mode}</div>
+
+      <div class="label">External Runtime Compatible</div>
+      <div class="value">${data.external_runtime_compatible}</div>
+
+      <div class="label">Replay Ingestion Flow</div>
+      ${stepsHtml}
+    `;
+
+    container.appendChild(card);
+
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "pipeline_version": "v1",
+  "pipeline_status": "active",
+  "ingestion_flow": [
+    "workflow_received",
+    "runtime_normalized",
+    "trace_registered",
+    "validator_initialized",
+    "replay_initialized",
+    "evidence_generated"
+  ],
+  "pipeline_mode": "replay_ingestion",
+  "external_runtime_compatible": true
+}
